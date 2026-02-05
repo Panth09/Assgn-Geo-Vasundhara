@@ -93,7 +93,53 @@
   transform: scaleY(1);
 }
 
-/* Custom scrollbar for table container */
+/* Horizontal scrollbar for table container on mobile */
+@media (max-width: 599px) {
+  /* Custom horizontal scrollbar for mobile */
+  .MuiTableContainer-root::-webkit-scrollbar {
+    height: 10px;
+    width: auto;
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    border-radius: 5px;
+    margin: 5px 0;
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #FF6B6B 0%, #FF8E72 50%, #FFB84D 100%);
+    border-radius: 5px;
+    border: 1px solid #f5f5f5;
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(90deg, #FF8E72 0%, #FFB84D 50%, #52C6B6 100%);
+    box-shadow: 0 0 8px rgba(255, 107, 107, 0.5);
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-thumb:active {
+    background: linear-gradient(90deg, #FFB84D 0%, #52C6B6 50%, #4A90E2 100%);
+    box-shadow: 0 0 12px rgba(255, 107, 107, 0.7);
+  }
+}
+
+/* Hide horizontal scrollbar on desktop */
+@media (min-width: 600px) {
+  .MuiTableContainer-root::-webkit-scrollbar {
+    height: 0px;
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-track {
+    display: none;
+  }
+
+  .MuiTableContainer-root::-webkit-scrollbar-thumb {
+    display: none;
+  }
+}
+
+/* Custom scrollbar for table container - vertical */
 ::-webkit-scrollbar {
   width: 12px;
   height: 12px;
