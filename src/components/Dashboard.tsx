@@ -50,36 +50,37 @@ export const Dashboard: React.FC = () => {
   }, [projects]);
 
   return (
-    <Box sx={{ width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', animation: 'fadeInApp 0.8s ease-out' }}>
+    <Box sx={{ width: '100%', height: '100vh', display: 'flex', flexDirection: 'column', animation: 'fadeInApp 0.8s ease-out', overflow: 'hidden' }}>
       {/* Header */}
       <Box
         sx={{
           background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E72 25%, #FFB84D 50%, #52C6B6 75%, #4A90E2 100%)',
           color: 'white',
-          p: { xs: 1.5, sm: 2.5 },
+          p: { xs: 1, sm: 1.5, md: 2.5 },
           boxShadow: '0 8px 32px rgba(255, 107, 107, 0.3)',
           animation: 'slideDownHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          flexShrink: 0,
         }}
       >
-        <Container maxWidth="lg" disableGutters sx={{ width: '100%', maxWidth: '100%', px: { xs: 1, sm: 2 } }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 1, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1, sm: 0 } }}>
+        <Container maxWidth="lg" disableGutters sx={{ width: '100%', maxWidth: '100%', px: { xs: 0.5, sm: 1, md: 2 } }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: { xs: 0.5, sm: 1 }, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 0.5, sm: 1, md: 2 } }}>
             <Box>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', letterSpacing: '1px', textShadow: '0 2px 4px rgba(0,0,0,0.2)', fontSize: { xs: '1.3rem', sm: '2.125rem' } }}>
-                🗺️ India Geo Data Dashboard
+              <Typography variant="h4" sx={{ fontWeight: 'bold', letterSpacing: '1px', textShadow: '0 2px 4px rgba(0,0,0,0.2)', fontSize: { xs: '1rem', sm: '1.5rem', md: '2.125rem' } }}>
+                🗺️ Geo Dashboard
               </Typography>
-              <Typography variant="body2" sx={{ mt: 0.5, opacity: 0.95, letterSpacing: '0.5px', fontSize: { xs: '0.7rem', sm: '0.875rem' }, display: { xs: 'none', sm: 'block' } }}>
-                Interactive visualization of spatial data across India with real-time synchronization
+              <Typography variant="body2" sx={{ mt: { xs: 0.25, sm: 0.5 }, opacity: 0.95, letterSpacing: '0.5px', fontSize: { xs: '0.65rem', sm: '0.8rem', md: '0.875rem' }, display: { xs: 'none', md: 'block' } }}>
+                Interactive spatial data visualization
               </Typography>
             </Box>
-            <Box sx={{ textAlign: 'right', background: 'rgba(255,255,255,0.15)', px: { xs: 1, sm: 2 }, py: 0.75, borderRadius: '12px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: { xs: '0.9rem', sm: '1.3rem' }, color: '#FFE66D', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
+            <Box sx={{ textAlign: 'right', background: 'rgba(255,255,255,0.15)', px: { xs: 0.75, sm: 1.5, md: 2 }, py: { xs: 0.5, sm: 0.75 }, borderRadius: '12px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: { xs: '0.75rem', sm: '1rem', md: '1.3rem' }, color: '#FFE66D', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
                 Page
               </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
+              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.75rem' } }}>
                 {pagination.pageNumber} / {Math.ceil(pagination.totalCount / pagination.pageSize)}
               </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block', mt: 0.25 }}>
-                {pagination.pageSize} items/page
+              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.55rem', sm: '0.65rem', md: '0.7rem' }, display: 'block', mt: { xs: 0.1, sm: 0.25 } }}>
+                {pagination.pageSize}/page
               </Typography>
             </Box>
           </Box>
@@ -90,8 +91,8 @@ export const Dashboard: React.FC = () => {
       <Box
         sx={{
           flex: 1,
-          py: { xs: 1, sm: 2 },
-          px: { xs: 1, sm: 2 },
+          py: { xs: 0.75, sm: 1, md: 2 },
+          px: { xs: 0.75, sm: 1, md: 2 },
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -179,12 +180,13 @@ export const Dashboard: React.FC = () => {
         sx={{
           background: 'linear-gradient(90deg, #ffffff 0%, #f9f9f9 50%, #ffffff 100%)',
           borderTop: '3px solid #FF6B6B',
-          p: { xs: 1, sm: 2 },
+          p: { xs: 0.75, sm: 1, md: 2 },
           textAlign: 'center',
           animation: 'slideUpFooter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
+          flexShrink: 0,
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: { xs: 0.5, sm: 1.5 }, mb: 1, flexWrap: 'wrap' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: { xs: 0.4, sm: 0.8, md: 1.5 }, mb: { xs: 0.5, sm: 1 }, flexWrap: 'wrap' }}>
           <Button
             variant="contained"
             onClick={() => setPageNumber(Math.max(1, pagination.pageNumber - 1))}
@@ -193,8 +195,8 @@ export const Dashboard: React.FC = () => {
               background: pagination.pageNumber === 1 ? '#d0d0d0' : 'linear-gradient(135deg, #FF6B6B, #FF8E72)',
               color: 'white',
               fontWeight: 'bold',
-              padding: { xs: '6px 10px', sm: '8px 16px' },
-              fontSize: { xs: '0.7rem', sm: '0.9rem' },
+              padding: { xs: '4px 8px', sm: '6px 10px', md: '8px 16px' },
+              fontSize: { xs: '0.6rem', sm: '0.75rem', md: '0.9rem' },
               borderRadius: '8px',
               '&:hover': {
                 background: pagination.pageNumber === 1 ? '#d0d0d0' : 'linear-gradient(135deg, #FF8E72, #FFB84D)',
@@ -203,24 +205,24 @@ export const Dashboard: React.FC = () => {
               },
             }}
           >
-            ← Prev
+            {window.innerWidth < 600 ? '←' : 'Prev'}
           </Button>
 
           <Box sx={{
             display: 'flex',
-            gap: 0.5,
+            gap: 0.3,
             alignItems: 'center',
-            px: { xs: 1, sm: 1.5 },
-            py: 0.5,
+            px: { xs: 0.75, sm: 1, md: 1.5 },
+            py: { xs: 0.25, sm: 0.5 },
             background: 'linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%)',
             borderRadius: '8px',
             border: '2px solid #FF6B6B',
           }}>
-            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#FF6B6B', minWidth: '20px', textAlign: 'center', fontSize: { xs: '0.75rem', sm: '1rem' } }}>
+            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#FF6B6B', minWidth: '16px', textAlign: 'center', fontSize: { xs: '0.65rem', sm: '0.8rem', md: '1rem' } }}>
               {pagination.pageNumber}
             </Typography>
-            <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '0.65rem', sm: '0.875rem' } }}>/</Typography>
-            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#4A90E2', minWidth: '20px', textAlign: 'center', fontSize: { xs: '0.75rem', sm: '1rem' } }}>
+            <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '0.55rem', sm: '0.7rem', md: '0.875rem' } }}>/</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#4A90E2', minWidth: '16px', textAlign: 'center', fontSize: { xs: '0.65rem', sm: '0.8rem', md: '1rem' } }}>
               {Math.ceil(pagination.totalCount / pagination.pageSize)}
             </Typography>
           </Box>
@@ -233,8 +235,8 @@ export const Dashboard: React.FC = () => {
               background: pagination.pageNumber >= Math.ceil(pagination.totalCount / pagination.pageSize) ? '#d0d0d0' : 'linear-gradient(135deg, #52C6B6, #4A90E2)',
               color: 'white',
               fontWeight: 'bold',
-              padding: { xs: '6px 10px', sm: '8px 16px' },
-              fontSize: { xs: '0.7rem', sm: '0.9rem' },
+              padding: { xs: '4px 8px', sm: '6px 10px', md: '8px 16px' },
+              fontSize: { xs: '0.6rem', sm: '0.75rem', md: '0.9rem' },
               borderRadius: '8px',
               '&:hover': {
                 background: pagination.pageNumber >= Math.ceil(pagination.totalCount / pagination.pageSize) ? '#d0d0d0' : 'linear-gradient(135deg, #4A90E2, #FF6B6B)',
@@ -243,12 +245,12 @@ export const Dashboard: React.FC = () => {
               },
             }}
           >
-            Next →
+            {window.innerWidth < 600 ? '→' : 'Next'}
           </Button>
         </Box>
 
-        <Typography variant="caption" sx={{ fontWeight: 500, color: '#555', letterSpacing: '0.5px', fontSize: { xs: '0.65rem', sm: '0.75rem' }, display: 'block' }}>
-          ✨ Displaying <span style={{ fontWeight: 'bold', color: '#FF6B6B' }}>{projects.length}</span> of <span style={{ fontWeight: 'bold', color: '#4A90E2' }}>{pagination.totalCount}</span> projects • <span style={{ color: '#FFB84D', fontWeight: 'bold' }}>📄 Page {pagination.pageNumber}</span>
+        <Typography variant="caption" sx={{ fontWeight: 500, color: '#555', letterSpacing: '0.5px', fontSize: { xs: '0.6rem', sm: '0.7rem', md: '0.75rem' }, display: 'block' }}>
+          ✨ Showing <span style={{ fontWeight: 'bold', color: '#FF6B6B' }}>{projects.length}</span> of <span style={{ fontWeight: 'bold', color: '#4A90E2' }}>{pagination.totalCount}</span> projects • <span style={{ color: '#FFB84D', fontWeight: 'bold' }}>📄 {pagination.pageNumber}</span>
         </Typography>
       </Box>
     </Box>
