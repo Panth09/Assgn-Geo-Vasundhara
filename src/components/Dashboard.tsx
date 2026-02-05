@@ -101,7 +101,7 @@ export const Dashboard: React.FC = () => {
 
         <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1.5, sm: 2 }} sx={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
           {/* Data Table */}
-          <Box sx={{ flex: { xs: 0.4, md: 1 }, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInLeft 0.6s ease-out' }}>
+          <Box sx={{ flex: { xs: 1, md: 1 }, minWidth: { xs: '100%', md: 0 }, overflow: 'hidden', minHeight: { xs: 'auto', md: 0 }, animation: 'slideInLeft 0.6s ease-out' }}>
             <Paper
               elevation={2}
               sx={{
@@ -137,7 +137,7 @@ export const Dashboard: React.FC = () => {
           </Box>
 
           {/* Map */}
-          <Box sx={{ flex: { xs: 0.6, md: 1 }, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInRight 0.6s ease-out', display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ flex: { xs: 1, md: 1 }, minWidth: { xs: '100%', md: 0 }, overflow: 'hidden', minHeight: { xs: 'auto', md: 0 }, animation: 'slideInRight 0.6s ease-out', display: 'flex', flexDirection: 'column' }}>
             <Paper
               elevation={2}
               sx={{
