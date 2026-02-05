@@ -87,8 +87,8 @@ export const Dashboard: React.FC = () => {
       <Box
         sx={{
           flex: 1,
-          py: 2,
-          px: 2,
+          py: { xs: 1, sm: 2 },
+          px: { xs: 1, sm: 2 },
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -99,9 +99,9 @@ export const Dashboard: React.FC = () => {
       >
         {error && <Alert severity="error" sx={{ mb: 2, animation: 'slideDown 0.4s ease-out' }}>{error}</Alert>}
 
-        <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ flex: 1, overflow: 'hidden', minHeight: 0 }}>
+        <Stack direction={{ xs: 'column', md: 'row' }} spacing={{ xs: 1.5, sm: 2 }} sx={{ flex: 1, overflow: 'auto', minHeight: 0 }}>
           {/* Data Table */}
-          <Box sx={{ flex: 1, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInLeft 0.6s ease-out' }}>
+          <Box sx={{ flex: { xs: 0.4, md: 1 }, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInLeft 0.6s ease-out' }}>
             <Paper
               elevation={2}
               sx={{
@@ -137,7 +137,7 @@ export const Dashboard: React.FC = () => {
           </Box>
 
           {/* Map */}
-          <Box sx={{ flex: 1, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInRight 0.6s ease-out', display: 'flex', flexDirection: 'column' }}>
+          <Box sx={{ flex: { xs: 0.6, md: 1 }, overflow: 'hidden', minWidth: 0, minHeight: 0, animation: 'slideInRight 0.6s ease-out', display: 'flex', flexDirection: 'column' }}>
             <Paper
               elevation={2}
               sx={{
