@@ -70,11 +70,6 @@ export const DataTable: React.FC<DataTableProps> = ({
     onFilterChange({ ...filters, [name]: value });
   };
 
-  const visibleColumns: (keyof GeoProject)[] = useMemo(
-    () => ['projectName', 'latitude', 'longitude', 'status', 'lastUpdated'],
-    []
-  );
-
   const mobileVisibleColumns: (keyof GeoProject)[] = useMemo(
     () => ['projectName', 'status'],
     []

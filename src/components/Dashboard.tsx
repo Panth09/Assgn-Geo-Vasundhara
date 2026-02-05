@@ -176,12 +176,12 @@ export const Dashboard: React.FC = () => {
         sx={{
           background: 'linear-gradient(90deg, #ffffff 0%, #f9f9f9 50%, #ffffff 100%)',
           borderTop: '3px solid #FF6B6B',
-          p: 2,
+          p: { xs: 1, sm: 2 },
           textAlign: 'center',
           animation: 'slideUpFooter 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)',
         }}
       >
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 1.5, mb: 1 }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: { xs: 0.5, sm: 1.5 }, mb: 1, flexWrap: 'wrap' }}>
           <Button
             variant="contained"
             onClick={() => setPageNumber(Math.max(1, pagination.pageNumber - 1))}
@@ -190,8 +190,8 @@ export const Dashboard: React.FC = () => {
               background: pagination.pageNumber === 1 ? '#d0d0d0' : 'linear-gradient(135deg, #FF6B6B, #FF8E72)',
               color: 'white',
               fontWeight: 'bold',
-              padding: '8px 16px',
-              fontSize: '0.9rem',
+              padding: { xs: '6px 10px', sm: '8px 16px' },
+              fontSize: { xs: '0.7rem', sm: '0.9rem' },
               borderRadius: '8px',
               '&:hover': {
                 background: pagination.pageNumber === 1 ? '#d0d0d0' : 'linear-gradient(135deg, #FF8E72, #FFB84D)',
@@ -200,24 +200,24 @@ export const Dashboard: React.FC = () => {
               },
             }}
           >
-            ← Previous
+            ← Prev
           </Button>
 
           <Box sx={{
             display: 'flex',
             gap: 0.5,
             alignItems: 'center',
-            px: 1.5,
+            px: { xs: 1, sm: 1.5 },
             py: 0.5,
             background: 'linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(74, 144, 226, 0.1) 100%)',
             borderRadius: '8px',
             border: '2px solid #FF6B6B',
           }}>
-            <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#FF6B6B', minWidth: '25px', textAlign: 'center' }}>
+            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#FF6B6B', minWidth: '20px', textAlign: 'center', fontSize: { xs: '0.75rem', sm: '1rem' } }}>
               {pagination.pageNumber}
             </Typography>
-            <Typography variant="body2" sx={{ color: '#666' }}>/</Typography>
-            <Typography variant="body1" sx={{ fontWeight: 'bold', color: '#4A90E2', minWidth: '25px', textAlign: 'center' }}>
+            <Typography variant="body2" sx={{ color: '#666', fontSize: { xs: '0.65rem', sm: '0.875rem' } }}>/</Typography>
+            <Typography variant="body2" sx={{ fontWeight: 'bold', color: '#4A90E2', minWidth: '20px', textAlign: 'center', fontSize: { xs: '0.75rem', sm: '1rem' } }}>
               {Math.ceil(pagination.totalCount / pagination.pageSize)}
             </Typography>
           </Box>
@@ -230,8 +230,8 @@ export const Dashboard: React.FC = () => {
               background: pagination.pageNumber >= Math.ceil(pagination.totalCount / pagination.pageSize) ? '#d0d0d0' : 'linear-gradient(135deg, #52C6B6, #4A90E2)',
               color: 'white',
               fontWeight: 'bold',
-              padding: '8px 16px',
-              fontSize: '0.9rem',
+              padding: { xs: '6px 10px', sm: '8px 16px' },
+              fontSize: { xs: '0.7rem', sm: '0.9rem' },
               borderRadius: '8px',
               '&:hover': {
                 background: pagination.pageNumber >= Math.ceil(pagination.totalCount / pagination.pageSize) ? '#d0d0d0' : 'linear-gradient(135deg, #4A90E2, #FF6B6B)',
@@ -244,7 +244,7 @@ export const Dashboard: React.FC = () => {
           </Button>
         </Box>
 
-        <Typography variant="caption" sx={{ fontWeight: 500, color: '#555', letterSpacing: '0.5px' }}>
+        <Typography variant="caption" sx={{ fontWeight: 500, color: '#555', letterSpacing: '0.5px', fontSize: { xs: '0.65rem', sm: '0.75rem' }, display: 'block' }}>
           ✨ Displaying <span style={{ fontWeight: 'bold', color: '#FF6B6B' }}>{projects.length}</span> of <span style={{ fontWeight: 'bold', color: '#4A90E2' }}>{pagination.totalCount}</span> projects • <span style={{ color: '#FFB84D', fontWeight: 'bold' }}>📄 Page {pagination.pageNumber}</span>
         </Typography>
       </Box>
