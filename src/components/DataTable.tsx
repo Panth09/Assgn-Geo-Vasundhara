@@ -301,17 +301,18 @@ export const DataTable: React.FC<DataTableProps> = ({
           display: 'flex',
           justifyContent: { xs: 'center', sm: 'space-between' },
           alignItems: 'center',
-          p: { xs: 1, sm: 2 },
+          p: { xs: 0.75, sm: 1, md: 2 },
           background: 'linear-gradient(90deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%)',
           borderTop: '2px solid #e0e0e0',
           animation: 'slideDown 0.4s ease-out',
-          gap: { xs: 1, sm: 2 },
+          gap: { xs: 0.75, sm: 1, md: 2 },
           flexWrap: 'wrap',
+          flexShrink: 0,
         }}
       >
-        <Box sx={{ fontWeight: 'bold', color: '#333', fontSize: { xs: '0.75rem', sm: '1rem' } }}>
-          Page <span style={{ color: '#FF6B6B', fontSize: '1rem', fontWeight: 'bold' }}>{pageNumber}</span> of{' '}
-          <span style={{ color: '#4A90E2', fontSize: '1rem', fontWeight: 'bold' }}>{Math.ceil(totalCount / pageSize)}</span>
+        <Box sx={{ fontWeight: 'bold', color: '#333', fontSize: { xs: '0.7rem', sm: '0.85rem', md: '1rem' } }}>
+          Page <span style={{ color: '#FF6B6B', fontSize: '0.9rem', fontWeight: 'bold' }}>{pageNumber}</span> of{' '}
+          <span style={{ color: '#4A90E2', fontSize: '0.9rem', fontWeight: 'bold' }}>{Math.ceil(totalCount / pageSize)}</span>
         </Box>
         <TablePagination
           rowsPerPageOptions={[25, 50, 100]}
@@ -325,20 +326,21 @@ export const DataTable: React.FC<DataTableProps> = ({
             padding: 0,
             '& .MuiIconButton-root': {
               transition: 'all 0.2s ease',
-              padding: { xs: '4px', sm: '8px' },
+              padding: { xs: '3px', sm: '5px', md: '8px' },
               '&:hover': {
                 backgroundColor: 'rgba(255, 107, 107, 0.1)',
               },
             },
             '& .MuiTablePagination-toolbar': {
               paddingRight: 0,
-              minHeight: '44px',
+              minHeight: { xs: '36px', sm: '44px' },
+              fontSize: { xs: '0.7rem', sm: '0.8rem', md: '1rem' },
             },
             '& .MuiTablePagination-selectLabel': {
               display: { xs: 'none', sm: 'block' },
             },
             '& .MuiTablePagination-displayedRows': {
-              fontSize: { xs: '0.75rem', sm: '1rem' },
+              fontSize: { xs: '0.7rem', sm: '0.8rem', md: '1rem' },
             },
           }}
         />
