@@ -56,27 +56,30 @@ export const Dashboard: React.FC = () => {
         sx={{
           background: 'linear-gradient(135deg, #FF6B6B 0%, #FF8E72 25%, #FFB84D 50%, #52C6B6 75%, #4A90E2 100%)',
           color: 'white',
-          p: 2.5,
+          p: { xs: 1.5, sm: 2.5 },
           boxShadow: '0 8px 32px rgba(255, 107, 107, 0.3)',
           animation: 'slideDownHeader 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)',
         }}
       >
-        <Container maxWidth="lg" disableGutters sx={{ width: '100%', maxWidth: '100%', px: 2 }}>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 1 }}>
+        <Container maxWidth="lg" disableGutters sx={{ width: '100%', maxWidth: '100%', px: { xs: 1, sm: 2 } }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: { xs: 'flex-start', sm: 'center' }, mb: 1, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1, sm: 0 } }}>
             <Box>
-              <Typography variant="h4" sx={{ fontWeight: 'bold', letterSpacing: '1px', textShadow: '0 2px 4px rgba(0,0,0,0.2)' }}>
+              <Typography variant="h4" sx={{ fontWeight: 'bold', letterSpacing: '1px', textShadow: '0 2px 4px rgba(0,0,0,0.2)', fontSize: { xs: '1.3rem', sm: '2.125rem' } }}>
                 🗺️ India Geo Data Dashboard
               </Typography>
-              <Typography variant="body2" sx={{ mt: 0.5, opacity: 0.95, letterSpacing: '0.5px' }}>
+              <Typography variant="body2" sx={{ mt: 0.5, opacity: 0.95, letterSpacing: '0.5px', fontSize: { xs: '0.7rem', sm: '0.875rem' }, display: { xs: 'none', sm: 'block' } }}>
                 Interactive visualization of spatial data across India with real-time synchronization
               </Typography>
             </Box>
-            <Box sx={{ textAlign: 'right', background: 'rgba(255,255,255,0.15)', px: 2, py: 1, borderRadius: '12px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
-              <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.3rem', color: '#FFE66D', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
-                Page {pagination.pageNumber}
+            <Box sx={{ textAlign: 'right', background: 'rgba(255,255,255,0.15)', px: { xs: 1, sm: 2 }, py: 0.75, borderRadius: '12px', backdropFilter: 'blur(10px)', border: '1px solid rgba(255,255,255,0.2)' }}>
+              <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: { xs: '0.9rem', sm: '1.3rem' }, color: '#FFE66D', textShadow: '0 2px 8px rgba(0,0,0,0.3)' }}>
+                Page
               </Typography>
-              <Typography variant="caption" sx={{ opacity: 0.9 }}>
-                {pagination.pageSize} items per page
+              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
+                {pagination.pageNumber} / {Math.ceil(pagination.totalCount / pagination.pageSize)}
+              </Typography>
+              <Typography variant="caption" sx={{ opacity: 0.9, fontSize: { xs: '0.6rem', sm: '0.7rem' }, display: 'block', mt: 0.25 }}>
+                {pagination.pageSize} items/page
               </Typography>
             </Box>
           </Box>
