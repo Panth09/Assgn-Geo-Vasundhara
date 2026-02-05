@@ -116,7 +116,28 @@ export const DataTable: React.FC<DataTableProps> = ({
       </Box>
 
       {/* Table */}
-      <TableContainer component={Paper} sx={{ flex: 1, overflowY: 'auto', overflowX: 'auto', animation: 'fadeIn 0.4s ease-out', width: '100%' }}>
+      <TableContainer component={Paper} sx={{ 
+        flex: 1, 
+        overflowY: 'auto', 
+        overflowX: { xs: 'auto', sm: 'auto' }, 
+        animation: 'fadeIn 0.4s ease-out', 
+        width: '100%',
+        '&::-webkit-scrollbar': {
+          height: { xs: '8px', sm: '0px' },
+        },
+        '&::-webkit-scrollbar-track': {
+          background: { xs: '#f1f1f1', sm: 'transparent' },
+          display: { xs: 'block', sm: 'none' },
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: { xs: 'linear-gradient(90deg, #FF6B6B, #FF8E72)', sm: 'transparent' },
+          borderRadius: { xs: '4px', sm: '0px' },
+          display: { xs: 'block', sm: 'none' },
+        },
+        '&::-webkit-scrollbar-thumb:hover': {
+          background: { xs: 'linear-gradient(90deg, #FF8E72, #FFB84D)', sm: 'transparent' },
+        },
+      }}>
         {isLoading && (
           <Box
             sx={{
