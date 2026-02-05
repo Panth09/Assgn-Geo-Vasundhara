@@ -80,31 +80,33 @@ export const DataTable: React.FC<DataTableProps> = ({
       {/* Filters */}
       <Box
         sx={{
-          p: { xs: 1, sm: 2 },
+          p: { xs: 0.75, sm: 1, md: 2 },
           backgroundColor: '#f5f5f5',
           display: 'flex',
-          gap: { xs: 1, sm: 2 },
+          gap: { xs: 0.75, sm: 1, md: 2 },
           flexWrap: 'wrap',
           alignItems: 'center',
         }}
       >
         <TextField
           name="projectName"
-          label="Search Projects"
+          label="Search"
           variant="outlined"
           size="small"
           value={filters.projectName}
           onChange={handleFilterChange}
-          sx={{ minWidth: { xs: 120, sm: 200 }, fontSize: '0.875rem' }}
-          placeholder="Project name..."
+          sx={{ minWidth: { xs: 100, sm: 150, md: 200 }, fontSize: { xs: '0.8rem', sm: '0.9rem' } }}
+          placeholder="Project..."
+          inputProps={{ style: { fontSize: '0.875rem' } }}
         />
-        <FormControl size="small" sx={{ minWidth: { xs: 100, sm: 150 } }}>
-          <InputLabel>Status</InputLabel>
+        <FormControl size="small" sx={{ minWidth: { xs: 90, sm: 120, md: 150 } }}>
+          <InputLabel sx={{ fontSize: { xs: '0.8rem', sm: '0.9rem' } }}>Status</InputLabel>
           <Select
             name="status"
             value={filters.status}
             onChange={(e) => handleFilterChange(e as any)}
             label="Status"
+            sx={{ fontSize: { xs: '0.8rem', sm: '0.9rem' } }}
           >
             <MenuItem value="All">All</MenuItem>
             <MenuItem value="Active">Active</MenuItem>
