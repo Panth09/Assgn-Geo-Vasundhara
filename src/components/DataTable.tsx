@@ -20,6 +20,7 @@ import {
 } from '@mui/material';
 import type { GeoProject, FilterState, SortState } from '../types/index';
 import { formatDate } from '../utils/helpers';
+import './DataTable.css';
 
 interface DataTableProps {
   projects: GeoProject[];
@@ -115,7 +116,7 @@ export const DataTable: React.FC<DataTableProps> = ({
       </Box>
 
       {/* Table */}
-      <TableContainer component={Paper} sx={{ flex: 1, overflow: 'auto' }}>
+      <TableContainer component={Paper} sx={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', animation: 'fadeIn 0.4s ease-out', width: '100%' }}>
         {isLoading && (
           <Box
             sx={{
@@ -123,20 +124,26 @@ export const DataTable: React.FC<DataTableProps> = ({
               justifyContent: 'center',
               alignItems: 'center',
               height: 200,
+              animation: 'pulse 1.5s ease-in-out infinite',
             }}
           >
             <CircularProgress />
           </Box>
         )}
         {!isLoading && (
-          <Table stickyHeader size="small">
+          <Table stickyHeader size="small" sx={{ tableLayout: 'auto', width: '100%' }}>
             <TableHead>
               <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
                 {visibleColumns.map(column => (
                   <TableCell
                     key={column}
                     sortDirection={sort.field === column ? sort.order : false}
-                    sx={{ fontWeight: 'bold' }}
+                    sx={{
+                      fontWeight: 'bold',
+                      whiteSpace: 'nowrap',
+                      padding: '12px 8px',
+                      minWidth: column === 'projectName' ? '150px' : column === 'latitude' ? '90px' : column === 'longitude' ? '90px' : column === 'status' ? '80px' : '100px',
+                    }}
                   >
                     <TableSortLabel
                       active={sort.field === column}
@@ -161,7 +168,7 @@ export const DataTable: React.FC<DataTableProps> = ({
                   </TableCell>
                 </TableRow>
               ) : (
-                projects.map(project => (
+                projects.map((project, index) => (
                   <TableRow
                     key={project.id}
                     hover
@@ -173,12 +180,14 @@ export const DataTable: React.FC<DataTableProps> = ({
                       '&:hover': {
                         backgroundColor: '#f5f5f5',
                       },
+                      animation: `slideIn 0.3s ease-out ${index * 0.02}s both`,
+                      transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                     }}
                   >
-                    <TableCell>{project.projectName}</TableCell>
-                    <TableCell>{project.latitude.toFixed(4)}</TableCell>
-                    <TableCell>{project.longitude.toFixed(4)}</TableCell>
-                    <TableCell>
+                    <TableCell sx={{ wordBreak: 'break-word', fontSize: '0.85rem', padding: '10px 8px', whiteSpace: 'nowrap' }}>{project.projectName}</TableCell>
+                    <TableCell sx={{ wordBreak: 'break-word', fontSize: '0.85rem', padding: '10px 8px', whiteSpace: 'nowrap' }}>{project.latitude.toFixed(4)}</TableCell>
+                    <TableCell sx={{ wordBreak: 'break-word', fontSize: '0.85rem', padding: '10px 8px', whiteSpace: 'nowrap' }}>{project.longitude.toFixed(4)}</TableCell>
+                    <TableCell sx={{ wordBreak: 'break-word', fontSize: '0.85rem', padding: '10px 8px', whiteSpace: 'nowrap' }}>
                       <Chip
                         label={project.status}
                         size="small"
@@ -189,7 +198,7 @@ export const DataTable: React.FC<DataTableProps> = ({
                         }}
                       />
                     </TableCell>
-                    <TableCell>{formatDate(project.lastUpdated)}</TableCell>
+                    <TableCell sx={{ wordBreak: 'break-word', fontSize: '0.85rem', padding: '10px 8px', whiteSpace: 'nowrap' }}>{formatDate(project.lastUpdated)}</TableCell>
                   </TableRow>
                 ))
               )}
@@ -199,15 +208,42 @@ export const DataTable: React.FC<DataTableProps> = ({
       </TableContainer>
 
       {/* Pagination */}
-      <TablePagination
-        rowsPerPageOptions={[25, 50, 100]}
-        component="div"
-        count={totalCount}
-        rowsPerPage={pageSize}
-        page={pageNumber - 1}
-        onPageChange={(_, newPage) => onPageChange(newPage + 1)}
-        onRowsPerPageChange={e => onPageSizeChange(Number(e.target.value))}
-      />
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          p: 2,
+          background: 'linear-gradient(90deg, #fafafa 0%, #f5f5f5 50%, #fafafa 100%)',
+          borderTop: '2px solid #e0e0e0',
+          animation: 'slideDown 0.4s ease-out',
+        }}
+      >
+        <Box sx={{ fontWeight: 'bold', color: '#333' }}>
+          Page <span style={{ color: '#FF6B6B', fontSize: '1.1rem', fontWeight: 'bold' }}>{pageNumber}</span> of{' '}
+          <span style={{ color: '#4A90E2', fontSize: '1.1rem', fontWeight: 'bold' }}>{Math.ceil(totalCount / pageSize)}</span>
+        </Box>
+        <TablePagination
+          rowsPerPageOptions={[25, 50, 100]}
+          component="div"
+          count={totalCount}
+          rowsPerPage={pageSize}
+          page={pageNumber - 1}
+          onPageChange={(_, newPage) => onPageChange(newPage + 1)}
+          onRowsPerPageChange={e => onPageSizeChange(Number(e.target.value))}
+          sx={{
+            '& .MuiIconButton-root': {
+              transition: 'all 0.2s ease',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 107, 107, 0.1)',
+              },
+            },
+            '& .MuiTablePagination-toolbar': {
+              paddingRight: 0,
+            },
+          }}
+        />
+      </Box>
     </Box>
   );
 };

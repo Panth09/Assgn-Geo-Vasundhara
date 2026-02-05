@@ -1,0 +1,123 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFast {
+  from {
+    opacity: 0;
+    transform: translateX(-15px);
+  }
+  50% {
+    transform: translateX(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes rowHoverGlow {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: rgba(25, 118, 210, 0.05);
+  }
+}
+
+@keyframes tableHeaderPulse {
+  0%, 100% {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.15);
+  }
+}
+
+.table-row-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.table-row-hover::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background: linear-gradient(180deg, #1976d2, #42a5f5);
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.table-row-hover:hover::before {
+  transform: scaleY(1);
+}
+
+/* Custom scrollbar for table container */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #f9f9f9 0%, #f5f5f5 100%);
+  border-radius: 10px;
+  margin: 5px 0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #FF6B6B 0%, #FF8E72 50%, #FFB84D 100%);
+  border-radius: 10px;
+  border: 2px solid #f5f5f5;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #FF8E72 0%, #FFB84D 50%, #52C6B6 100%);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.1), 0 0 8px rgba(255, 107, 107, 0.5);
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #FFB84D 0%, #52C6B6 50%, #4A90E2 100%);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2), 0 0 12px rgba(255, 107, 107, 0.7);
+}

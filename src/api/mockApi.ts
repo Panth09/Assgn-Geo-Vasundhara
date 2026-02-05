@@ -1,14 +1,36 @@
 import type { GeoProject, ApiResponse, FilterState } from '../types/index';
 
-// Generate mock data for 5k+ projects
+// Generate mock data for 5k+ projects with Indian locations
 const generateMockProjects = (count: number): GeoProject[] => {
   const statuses: Array<'Active' | 'Completed' | 'Pending' | 'On Hold'> = ['Active', 'Completed', 'Pending', 'On Hold'];
+  
+  // Indian regions with coordinates
   const regions = [
-    { name: 'North', latRange: [35, 40], lonRange: [-120, -110] },
-    { name: 'South', latRange: [25, 30], lonRange: [-100, -85] },
-    { name: 'East', latRange: [40, 45], lonRange: [-80, -70] },
-    { name: 'West', latRange: [37, 42], lonRange: [-125, -120] },
-    { name: 'Central', latRange: [38, 42], lonRange: [-95, -85] },
+    { name: 'North', city: 'Delhi', latRange: [28.4, 28.8], lonRange: [77.0, 77.4] },
+    { name: 'North', city: 'Punjab', latRange: [31.0, 32.0], lonRange: [74.5, 76.5] },
+    { name: 'South', city: 'Bangalore', latRange: [12.8, 13.2], lonRange: [77.5, 77.9] },
+    { name: 'South', city: 'Chennai', latRange: [12.8, 13.2], lonRange: [80.1, 80.5] },
+    { name: 'South', city: 'Hyderabad', latRange: [17.3, 17.5], lonRange: [78.4, 78.6] },
+    { name: 'East', city: 'Kolkata', latRange: [22.5, 22.6], lonRange: [88.3, 88.5] },
+    { name: 'East', city: 'Patna', latRange: [25.5, 25.7], lonRange: [85.1, 85.3] },
+    { name: 'West', city: 'Mumbai', latRange: [19.0, 19.3], lonRange: [72.8, 73.0] },
+    { name: 'West', city: 'Pune', latRange: [18.5, 18.6], lonRange: [73.8, 73.9] },
+    { name: 'West', city: 'Ahmedabad', latRange: [23.0, 23.2], lonRange: [72.5, 72.7] },
+    { name: 'Central', city: 'Indore', latRange: [22.7, 22.8], lonRange: [75.8, 75.9] },
+    { name: 'Central', city: 'Nagpur', latRange: [21.1, 21.2], lonRange: [79.0, 79.2] },
+  ];
+
+  const industries = [
+    'IT & Software',
+    'Manufacturing',
+    'Healthcare',
+    'Renewable Energy',
+    'Transportation',
+    'Agriculture',
+    'Real Estate',
+    'Retail',
+    'Finance',
+    'Education',
   ];
 
   const projects: GeoProject[] = [];
@@ -19,13 +41,13 @@ const generateMockProjects = (count: number): GeoProject[] => {
     const lon = region.lonRange[0] + Math.random() * (region.lonRange[1] - region.lonRange[0]);
 
     projects.push({
-      id: `PRJ-${String(i + 1).padStart(6, '0')}`,
-      projectName: `${region.name} Project ${i + 1}`,
+      id: `IND-${String(i + 1).padStart(6, '0')}`,
+      projectName: `${region.city} ${industries[Math.floor(Math.random() * industries.length)]} Project ${i + 1}`,
       latitude: parseFloat(lat.toFixed(6)),
       longitude: parseFloat(lon.toFixed(6)),
       status: statuses[Math.floor(Math.random() * statuses.length)],
       lastUpdated: new Date(Date.now() - Math.random() * 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
-      description: `Project in ${region.name} region`,
+      description: `Strategic project in ${region.city}, ${region.name} India`,
       budget: Math.floor(Math.random() * 5000000) + 100000,
       progress: Math.floor(Math.random() * 100),
     });
